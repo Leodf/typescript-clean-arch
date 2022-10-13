@@ -12,7 +12,7 @@ import { RouteSchema } from './@core/infra/db/typeorm/route.schema'
             type: 'sqlite',
             database: join(__dirname, 'database.sqlite'),
             synchronize: true,
-            logging: false,
+            logging: true,
             entities: [RouteSchema],
         }),
         RoutesModule,
