@@ -8,7 +8,7 @@ describe('RouteSchema Test', () => {
             type: 'sqlite',
             database: ':memory:',
             synchronize: true,
-            logging: true,
+            logging: false,
             entities: [RouteSchema],
         })
         await dataSource.initialize()
@@ -20,5 +20,6 @@ describe('RouteSchema Test', () => {
         })
         const routeRepo = dataSource.getRepository(Route)
         await routeRepo.save(route)
+        console.log(await routeRepo.findOneBy({ id: route.id }))
     })
 })

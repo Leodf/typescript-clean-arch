@@ -1,12 +1,12 @@
-import { LatLng, Route } from "../domain/route.entity"
-import { RouteRepositoryInterface } from "../domain/route.repository"
+import { LatLng, Route } from '../domain/route.entity'
+import { RouteRepositoryInterface } from '../domain/route.repository'
 
 export class CreateRouteUseCase {
-    constructor(private routeRepo: RouteRepositoryInterface){}
+    constructor(private routeRepo: RouteRepositoryInterface) {}
 
     async execute(input: CreateRouteInput): Promise<CreateRouteOutput> {
         //operações em cima das entidades
-        const route = new Route(input)
+        const route = Route.create(input)
         await this.routeRepo.insert(route)
         return route.toJSON()
     }
